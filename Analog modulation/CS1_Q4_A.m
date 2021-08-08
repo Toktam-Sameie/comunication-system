@@ -1,0 +1,25 @@
+[xm,Fs] = audioread('message.wav' );
+t = linspace(0,length(xm),length(xm));
+xc = DSB_Mod(xm,1,3250,Fs);
+
+subplot(411);
+plot(t,xm,'b');
+xlabel('Time');
+ylabel('Amplitude');
+title('Message signal');
+subplot(412);
+plot(t,xc,'c');
+xlabel('Time');
+ylabel('Amplitude');
+title('Modulated signal');
+subplot(413);
+plot(fftshift(abs(fft(xm))),'g');
+xlabel('frequency');
+ylabel('magnitude');
+title('Fourier Transform of signal');
+Xc=fft(xc);
+subplot(414);
+plot(fftshift(abs(Xc)),'r');
+xlabel('frequency');
+ylabel('magnitude');
+title('Fourier Transform of modulated signal ');
